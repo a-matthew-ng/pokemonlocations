@@ -139,7 +139,7 @@ onMounted(() => {
       L.marker(place.coordinates)
         .addTo(map)
         .bindPopup(
-          `<b>${place.name}</b><br> ${place.coordinates[1]}<br> <b>Pokemo/s:</b> ${place.description} `
+          `<b>${place.name}</b><br><b>Pokemo/s:</b> ${place.description} `
         )
         .openPopup();
     });
