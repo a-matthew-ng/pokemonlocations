@@ -46,7 +46,7 @@ const login = () => {
   position: relative;
   width: 100%;
   height: 100vh;
-  background: rgba(224, 223, 223, 0.795);
+  background-image: url(../assets/pokeFondo.png);
   background-size: cover;
   display: flex;
   justify-content: center;

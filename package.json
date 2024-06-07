@@ -9,13 +9,16 @@
   "dependencies": {
     "@bhplugin/vue3-datatable": "^1.1.4",
     "@mui/x-data-grid": "^7.6.2",
+    "@vue-leaflet/vue-leaflet": "^0.10.1",
     "core-js": "^3.8.3",
     "firebase": "^10.12.2",
     "firebase-tools": "^13.11.0",
+    "leaflet": "^1.9.4",
     "vue": "^3.2.13",
     "vue-router": "^4.0.3"
   },
   "devDependencies": {
+    "@types/leaflet": "^1.9.12",
     "@vue/cli-plugin-babel": "~5.0.0",
     "@vue/cli-plugin-router": "~5.0.0",
     "@vue/cli-service": "~5.0.0",

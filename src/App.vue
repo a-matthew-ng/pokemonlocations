@@ -17,7 +17,7 @@ body {
 
 input{
   border: 1px solid #c2c0c04f;
-  border-radius: 6px;
+  border-radius: 50px;
   margin: 6px;
   height: 40px;
   padding-left: 10px;
@@ -28,7 +28,8 @@ button.primary{
   background-color: #4dad5b;
   /* width: 500px; */
   height: 30px;
-  border-radius: 4px;
+  border-radius: 50px;
+  padding:0 30px;
   font-weight: 600;
   font-size: 16px;
   color: white;
