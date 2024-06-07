@@ -97,10 +97,10 @@ fetchPokemonData();
 .homePage {
   &-content {
     justify-content: center;
-    align-items: center;
+    align-items: start;
     &-table {
       margin: 10px;
-      width: 90%;
+      width: 50%;
     }
   }
 }

@@ -26,7 +26,7 @@ input{
 button.primary{
   border: 1px solid transparent;
   background-color: #4dad5b;
-  width: 500px;
+  /* width: 500px; */
   height: 30px;
   border-radius: 4px;
   font-weight: 600;
