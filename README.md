@@ -39,4 +39,8 @@ Se realiza utilizando firebase y se manejan 3 funciones:
 Link: [text](https://pokelocationv1-31822.web.app/)
 
 
+## Author
+Matthew Alexander Nuñez Gomez
+Desarrollador Front-End
+
 
