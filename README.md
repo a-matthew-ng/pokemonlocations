@@ -36,8 +36,12 @@ Se realiza utilizando firebase y se manejan 3 funciones:
 3. Close: Cierra sesión
 
 ## Visualización 
-Link: [text](https://pokelocationv1-31822.web.app/)
+Link: [Poke Location](https://pokelocationv1-31822.web.app/)
 
+
+## Credenciales
+Email: pokelocation@example.com
+Password: 12345poke
 
 ## Author
 Matthew Alexander Nuñez Gomez
