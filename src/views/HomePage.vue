@@ -89,9 +89,9 @@ onMounted(() => {
         description: "Inspirado en Kansai(Kobe)",
       },
       {
-        name: "Lake of Rage",
+        name: "Seaward cave",
         coordinates: [34.6901, 135.1955],
-        description: "Caterpie",
+        description: "Squirtle",
       },
       {
         name: "Kanto Route 26",
@@ -106,7 +106,7 @@ onMounted(() => {
       {
         name: "Pattern Bush",
         coordinates: [-25.6895, -85.1955],
-        description: "Caterpie",
+        description: "Weedle",
       },
       {
         name: "Kalos Route 2",
@@ -118,12 +118,28 @@ onMounted(() => {
         coordinates: [40.6901, -85.1955],
         description: "Caterpie",
       },
+      {
+        name: "Alola route 4",
+        coordinates: [-10.6901, -55.1955],
+        description: "Breedrill",
+      },
+      ,
+      {
+        name: "Cerulean city",
+        coordinates: [70.6901, -65.1955],
+        description: "Bulbasaur",
+      },
+      {
+        name: "National park",
+        coordinates: [-63.6901, -9.1955],
+        description: "Metapod",
+      },
     ];
     places.forEach((place) => {
       L.marker(place.coordinates)
         .addTo(map)
         .bindPopup(
-          `<b>${place.name}</b><br>Coordenadas: ${place.coordinates[0]}, ${place.coordinates[1]}<br> Pokemos: ${place.description} `
+          `<b>${place.name}</b><br> ${place.coordinates[1]}<br> <b>Pokemo/s:</b> ${place.description} `
         )
         .openPopup();
     });
