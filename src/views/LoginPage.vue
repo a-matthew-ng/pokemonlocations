@@ -3,7 +3,7 @@
     <img src="../assets/pokeLocationLogo.png" class="loginPage-img" />
     <div class="loginPage-body flex-column">
       <div class="loginPage-body-content flex-column">
-        <input v-model="mail" type="mail" placeholder="micorreo@exameple.com" />
+        <input v-model="mail" type="mail" placeholder="micorreo@example.com" />
         <input
           v-model="password"
           :type="statePassword ? 'text' : 'password'"
@@ -28,7 +28,6 @@ var password = ref("");
 var mail = ref("");
 
 const login = () => {
-  console.log("mail.value, password.value", mail.value, password.value);
   if (password.value !== "" && mail.value !== "") {
     loginPoke(mail.value, password.value);
   } else if (password.value == "" && mail.value !== "") {
@@ -39,7 +38,6 @@ const login = () => {
     alert("iNGRESAR DATOS");
   }
 };
-// background-image: url();
 </script>
 <style lang="scss">
 .loginPage {
@@ -51,12 +49,12 @@ const login = () => {
   display: flex;
   justify-content: center;
   align-items: center;
-  &-img{
+  &-img {
     margin-top: -10%;
-    width:34%;
+    width: 34%;
   }
   &-body {
-    width: 500px;
+    width: 40%;
     border: 0px;
     border-radius: 10px;
     background-color: #ffffffcd;
@@ -74,6 +72,30 @@ const login = () => {
           margin-top: 7px;
         }
       }
+    }
+  }
+}
+
+@media (max-width: 900px) {
+}
+
+@media (max-width: 700px) {
+  .loginPage {
+    &-img {
+      width: 50%;
+    }
+    &-body {
+      width: 90%;
+      &-content {
+        width: 100%;
+      }
+    }
+  }
+}
+@media (max-width: 500px) {
+  .loginPage {
+    &-img {
+      width: 90%;
     }
   }
 }

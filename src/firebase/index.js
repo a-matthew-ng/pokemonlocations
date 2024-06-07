@@ -24,7 +24,6 @@ const auth = getAuth(app);
 const loginPoke = async (mail, password) => {
   try {
     await signInWithEmailAndPassword(auth, mail, password).then(() => {
-      console.log("Se INICIO SESION");
       router.push("/homePage");
     });
   } catch (error) {
@@ -33,10 +32,28 @@ const loginPoke = async (mail, password) => {
       alert("Error: No existe un usuario con ese correo electrónico.");
     } else if (error.code === "auth/wrong-password") {
       alert("Error: La contraseña es incorrecta.");
-    } else  if(error.code === "auth/invalid-credential"){
+    } else if (error.code === "auth/invalid-credential") {
       alert("Error de credenciales");
     }
   }
 };
 
-export { auth, loginPoke };
+function closePoke() {
+  auth
+    .signOut()
+    .then(() => {
+      router.push("/");
+    })
+    .catch((error) => {
+      console.error("Error al cerrar sesión:", error);
+    });
+}
+
+function verifyStatusUse() {
+  auth.onAuthStateChanged((user) => {
+    if (!user) {
+      router.push("/");
+    } 
+  });
+}
+export { auth, loginPoke, closePoke, verifyStatusUse };

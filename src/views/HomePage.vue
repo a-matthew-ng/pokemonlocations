@@ -1,17 +1,24 @@
 <template>
   <section class="homePage">
+    <img @click="close()" class="close" src="../assets/log-out.png" title="Cerrar Sesión">
     <img src="../assets/pokeLocationLogo.png" class="homePage-banner" />
     <div class="homePage-content flex-column">
       <div class="homePage-content-table">
         <vue3-datatable :rows="rows" :columns="cols"> </vue3-datatable>
       </div>
-      <div class="homePage-content-map flex-column">
-        <img src="../assets/pokemonGif.gif" class="homePage-banner" />
-        <div class="homePage-content-map-text">
-          PokemonLocation presenta diversos puntos en donde podremos encontrar Pokemones.
+      <div class="homePage-content-map">
+        <div class="homePage-content-map-contentText">
+          <img src="../assets/klipartz.png" class="" />
+          <div class="homePage-content-map-contentText-text">
+            PokemonLocation presenta diversos puntos en donde podremos encontrar
+            Pokemones.
+          </div>
         </div>
-        
-        <div id="mapPoke" ref="mapContainer" class="homePage-content-map-map"></div>
+        <div
+          id="mapPoke"
+          ref="mapContainer"
+          class="homePage-content-map-map"
+        ></div>
       </div>
     </div>
   </section>
@@ -24,6 +31,7 @@ import Vue3Datatable from "@bhplugin/vue3-datatable";
 import L from "leaflet";
 import { Icon } from "leaflet";
 import "leaflet/dist/leaflet.css";
+import { closePoke, verifyStatusUse } from "@/firebase/index.js";
 
 /**
  * Data
@@ -40,10 +48,11 @@ const cols =
 const mapContainer = ref(null);
 
 /**
-  CONSULTAS Y METODOS RELACIONADOS AL DATATABLE
+  CONSULTAS Y METODOS RELACIONADOS
 */
 
 onMounted(() => {
+  verifyStatusUse()
   if (mapContainer.value) {
     // Crear el mapa y establecer la vista inicial
     const map = L.map(mapContainer.value).setView([34.6849, 138.9944], 2);
@@ -180,8 +189,6 @@ async function getEncountersPoke(urlEncounters, id) {
 
     if (pokemonInfoTable.value.length === pokemonData.value.length) {
       rows.value = pokemonInfoTable.value;
-
-      console.log("row.value", rows.value);
     }
   } catch (error) {
     console.error("Error fetching Pokémon data:", error);
@@ -198,18 +205,29 @@ function textFormatter(text) {
   return textSplit;
 }
 
-/**
-  METODOS RELACIONADOS AL MAPA
-*/
+function close() {
+  closePoke();
+}
 
 fetchPokemonData();
 </script>
 <style lang="scss">
+.close{
+  position: relative;
+  width: 45px;
+  color: white;
+  margin: 6px;
+  cursor: pointer;
+}
+
 .bh-datatable .bh-table-responsive {
   @apply min-h-[380px];
 }
 .homePage {
-  &-banner{
+  position: relative;
+  width: 100%;
+  background-image: url(../assets/background.png);
+  &-banner {
     width: 25%;
     display: block;
     margin: 0 auto;
@@ -223,21 +241,25 @@ fetchPokemonData();
       margin: 10px;
       width: 50%;
     }
-    &-map{
-      display: column;
-      img{
-        width: 80%;
-      }
-      &-text{
-        align-self: center;
-        width: 80%;
-        margin-top: -8%;
-        margin-bottom: 3%;
-        background: #4dad5b;
-        border: 1px solid #4bb95c;
-        color: white;
-        padding: 20px;
-        border-radius:15px;
+    &-map {
+      width: 45%;
+      &-contentText {
+        margin-top: 2%;
+        display: flex;
+        align-items: center;
+        img {
+          width: 20%;
+          margin-bottom: 3%;
+        }
+        &-text {
+          margin-bottom: 3%;
+          background: #4dad5b;
+          border: 1px solid #4bb95c;
+          color: white;
+          padding: 20px;
+          font-size: 20px;
+          border-radius: 15px;
+        }
       }
     }
     &-map-map {
@@ -247,24 +269,35 @@ fetchPokemonData();
   }
 }
 
-/* Media query para pantallas más pequeñas (tabletas y móviles) */
 @media (max-width: 900px) {
+  .homePage-banner {
+    width: 55%;
+    display: block;
+    margin: 0 auto;
+    margin-top: -10%;
+  }
   .homePage-content {
     margin: 2%;
+    margin-top: -4%;
     flex-direction: column-reverse;
     align-items: center;
     &-table {
-      width: 90%;
+      width: 70%;
     }
     &-map {
       width: 70%;
-      height: 400px;
-
+      &-contentText {
+        img {
+          width: 20%;
+        }
+        &-text {
+          font-size: 15px;
+        }
+      }
     }
   }
 }
 
-/* Media query para pantallas muy pequeñas (móviles) */
 @media (max-width: 700px) {
   .homePage-content {
     &-table {
@@ -272,11 +305,10 @@ fetchPokemonData();
     }
     &-map {
       width: 90%;
-      height: 400px;
     }
   }
 }
-/* Media query para pantallas muy pequeñas (móviles) */
+
 @media (max-width: 500px) {
   .homePage-content {
     &-table {
@@ -284,7 +316,6 @@ fetchPokemonData();
     }
     &-map {
       width: 100%;
-      height: 400px;
     }
   }
 }
